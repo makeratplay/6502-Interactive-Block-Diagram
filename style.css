@@ -1,0 +1,28 @@
+
+.imgOverlay{
+    position: relative;
+    background-image: url("HansonBLockDiagram.png");
+    width: 1200px;
+    height: 1630px;
+}
+
+input{
+    padding: 5px;
+}
+
+label {
+    margin: 10px;
+    display: block;
+}
+
+.highlight{
+    margin-left: -25px;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgb(250, 98, 98);
+    opacity: 0.5;
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.904) inset;
+}
