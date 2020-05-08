@@ -6,6 +6,8 @@
     <title>6502 Block Diagram Map</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
 
@@ -13,12 +15,17 @@
 <body>
     <center>
         <h2> Paste DPControl from <a href="http://visual6502.org/JSSim/expert.html">visual6502.org</a></h2>
-        <input type="text" style="width: 600px" id="ControlSignals"/> <button onclick="mapIt()">Map It</button>
-        </br></br>
+        <input type="text" style="width: 600px" id="ControlSignals" value="DL/DB,DL/ADL,DL/ADH,PHI2,PHI2,PHI1,PHI2,PCL/PCL,ADLPCL,I/PC,PHI2,PCL/DB,PCLADL,0ADL0,0ADL1,0ADL2,PHI2,PCH/PCH,ADHPCH,PHI2,PCH/DB,PCHADH,SBDB,SBDB,SB/ADH,SB/ADH,ADH/ABH,0/ADH(1-7),0/ADH0,PHI2,SB/S,S/ADL,S/SB,SS??,PCHC,PCLC,PCLC,~DAA,~DAA,~DAA,~DSA,~DSA,0ADD,AC/DB,AC/SB,ACR,ACR,ACR/C,ADDSB06,ADDSB7,ADDADL,ADL/ABL,ADL/ADD,ANDS,AVR,AVR,AVR/V,DB/ADD,DB0/C,DB1/Z,DB2/I,DB3/D,DB6/V,DB7/N,DBADD,DBZ,DBZ/Z,EORS,HC,I/ADDC,~IPC,I/V,IR5,IR5/C,IR5/D,IR5/I,ORS,P/DB,phi1,phi1,phi2,phi2,phi2,phi2,phi2,phi2,phi2,phi2,phi2,phi2,SBAC,SBADD,SB/X,SB/Y,SRS,SUMS,T1,X/SB,Y/SB,NDB/ADD"/> <button onclick="mapIt()">Map It</button> <button onclick="paste()">Paste</button>
+        
+        
+    </center>        
         <div id="blockDiagram" class="imgOverlay">
-           
+        </div>
+        <div class="footnote">
+            Block Diagram of 6502 MIcorprocessor, Circa 1979 <br/>
+            <a href="https://www.witwright.com/DonPub/6502-Block-Diagram.pdf">Drawing © 1995-2011 Donald F. Hanson</a>
         </div>
         
-    </center>
+        <div id="busDetails"></div>
 </body>
 </html>

@@ -1,9 +1,33 @@
+body{
+    background-color: black;
+    color: white;
+    
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid white;
+    padding: 5px;
+  }
+
+a:visited {
+    color: white;
+  }
+
+.footnote{
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
 .imgOverlay{
     position: relative;
-    background-image: url("HansonBLockDiagram.png");
-    width: 1200px;
-    height: 1630px;
+    background-image: url("HansonBLockDiagram_v3.png");
+    width: 1300px;
+    height: 1530px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input{
@@ -24,5 +48,29 @@ label {
     position: absolute;
     background-color: rgb(250, 98, 98);
     opacity: 0.5;
-    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.904) inset;
+}
+
+#lines{
+    top: 500px;
+    left: 410px;
+    position: absolute;
+}
+
+.lineFound{
+  display: block;
+  margin-top: 10px;    
+}
+
+.lineNotFound{
+    display: block;
+    margin-top: 5px;
+    color: red;
+}
+
+.busEnable{
+    position: absolute;
+    font-size: 25px;
+    color: white;
+    background-color: midnightblue;
+    border-radius: 50%;    
 }
