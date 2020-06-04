@@ -67,7 +67,7 @@ var controlLines = [
     
     { Name: "SBAC",  left: 835, top: 1360, Register: "Accumulator (AC)", LoadEnable: true, direction: "fa-arrow-circle-down", Note: "" },
     { Name: "AC/DB",  left: 754, top: 1408, Register: "Accumulator (AC)", BusEnable: "DB", direction: "fa-arrow-circle-left", Note: "" },
-    { Name: "AC/SB",  left: 920, top: 1405, Register: "Accumulator (AC)", BusEnable: "SB", direction: "fa-arrow-circle-right", Note: "" },
+    { Name: "ACSB",  left: 920, top: 1405, Register: "Accumulator (AC)", BusEnable: "SB", direction: "fa-arrow-circle-right", Note: "" },
 
 
     { Name: "SBADD",  left: 815, top: 1129, Register: "A Input Regiter (AI)", LoadEnable: true, direction: "fa-arrow-circle-left", Note: "" },
@@ -94,6 +94,12 @@ var controlLines = [
     { Name: "SRS",  left: 805, top: 1029, Register: "Arithmetic Logic With Decimal Carry Look-A-Head (CD)", BusEnable: "ADD", direction: "fa-arrow-circle-right", Note: "" },
 
     { Name: "P/DB",  left: 515, top: 1408, Register: "Processor Status Register (P)", BusEnable: "DB", direction: "fa-arrow-circle-right", Note: "" },
+
+
+    { Name: "~DAA",  left: 690, top: 870, Register: "Program Counter Low Increment Logic", LoadEnable: true, direction: "fa-info-circle", Note: "Decimal Enable" },
+    { Name: "~DAA",  left: 710, top: 1270, Register: "Program Counter Low Increment Logic", LoadEnable: true, direction: "fa-info-circle", Note: "" },
+    { Name: "~DSA",  left: 710, top: 1240, Register: "Program Counter Low Increment Logic", LoadEnable: true, direction: "fa-info-circle", Note: "" },
+
 
 
 /*
@@ -211,7 +217,7 @@ var busData = {
 function mapIt(){
     $('#blockDiagram').empty();
     
-    let data = $("#ControlSignals"). val().toUpperCase();
+    let data = $("#ControlSignals").val().toUpperCase();
 
     let debugData = "";
 
@@ -231,26 +237,28 @@ function mapIt(){
 }
 
 function renderRCLLines( data ){
-    var words = data.split(',');
-
-    let linesHtml = '<div id="lines">'
-    words.forEach( item => {
-        if ( item != "PHI1" && item != "PHI2"){
-            let found = false;
-            for( i = 0; i < controlLines.length; i++ ){
-                if ( item == controlLines[i].Name ){
-                    found = true;
-                    linesHtml += '<span class="lineFound"> <i class="fas fa-arrow-right"></i> ' + item + '</span>';
-                    break;
+    if ( data.length > 0 ){
+        var words = data.split(',');
+        let linesHtml = '<div id="lines">'
+        words.forEach( word => {
+            item = word.trim();
+            if ( item != "PHI1" && item != "PHI2"){
+                let found = false;
+                for( i = 0; i < controlLines.length; i++ ){
+                    if ( item == controlLines[i].Name ){
+                        found = true;
+                        linesHtml += '<span class="lineFound"> <i class="fas fa-arrow-right"></i> ' + item + '</span>';
+                        break;
+                    }
+                }
+                if ( !found && !item.startsWith('#') ){
+                    linesHtml += '<span class="lineNotFound"> <i class="fas fa-arrow-right"></i> ' + item + '</span>';
                 }
             }
-            if ( !found && !item.startsWith('#') ){
-                linesHtml += '<span class="lineNotFound"> <i class="fas fa-arrow-right"></i> ' + item + '</span>';
-            }
-        }
-    })
-    linesHtml += '</div>';
-    $('#blockDiagram').append(linesHtml);
+        })
+        linesHtml += '</div>';
+        $('#blockDiagram').append(linesHtml);
+    }
 }
 
 function buildBusTable(){
